@@ -1,7 +1,7 @@
 import numpy as np
 import random
 
-TOTAL_NUMBER_OF_EXPERIMENTS = 1000
+TOTAL_NUMBER_OF_EXPERIMENTS = 100000
 TOTAL_NUMBER_OF_COINS = 1000
 
 
@@ -16,11 +16,9 @@ class Coin(object):
 Sum_n0, Sum_nRand, Sum_nMin = 0., 0., 0.
 for i in range(TOTAL_NUMBER_OF_EXPERIMENTS):
     experiment = [Coin().get_frequency() for _ in range(TOTAL_NUMBER_OF_COINS)]
-    Sum_n0 += experiment[0]
-    Sum_nRand += random.choice(experiment)
     Sum_nMin += min(experiment)
     if i% 500==0:
-        print i/float(TOTAL_NUMBER_OF_EXPERIMENTS)," percent done. nMin so far: ",  Sum_nMin/float(i+1), ''
+        print i/float(TOTAL_NUMBER_OF_EXPERIMENTS), " percent done. nMin so far: ",  Sum_nMin/float(i+1)
 
 
 denominator = float(TOTAL_NUMBER_OF_EXPERIMENTS)
